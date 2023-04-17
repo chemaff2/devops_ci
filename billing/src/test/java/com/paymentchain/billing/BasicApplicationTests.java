@@ -82,7 +82,7 @@ public class BasicApplicationTests {
                 .content(asJsonString(mockdto))
         ).andDo(print()).andExpect(status().isOk());
     }
-
+      
     /**
      * Test call of create method, on weblayer.
      */
