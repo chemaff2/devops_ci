@@ -22,16 +22,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import com.paymentchain.billing.respository.InvoiceRepository;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import java.util.Optional;
 
 /**
  *
  * @author sotobotero
  */
-@Tag(name = "Billing API")
+@Api(tags = "Billing API")
 @RestController
 @RequestMapping("/billing")
 public class InvoiceRestController {
@@ -45,7 +46,10 @@ public class InvoiceRestController {
     @Autowired
     InvoiceResposeMapper irspm;
     
-   
+    @ApiOperation(value = "Return all transaction bundled into Response", notes = "Return 204 if no data found")
+    @ApiResponses(value = {
+        @ApiResponse(code = 204, message = "There are not transactions"),
+        @ApiResponse(code = 500, message = "Internal error")})
     @GetMapping()
     public List<InvoiceResponse> list() {
         List<Invoice> findAll = billingRepository.findAll();

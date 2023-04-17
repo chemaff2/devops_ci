@@ -7,6 +7,7 @@ package com.paymentchain.billing.common;
 
 import java.time.Duration;
 import java.util.Arrays;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -16,6 +17,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -78,7 +80,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 cc.setExposedHeaders(Arrays.asList("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"));                
 		cc.setAllowedOrigins(Arrays.asList("/*"));
 		cc.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "PUT","PATCH"));
-                cc.addAllowedOriginPattern("*");
+                cc.addAllowedOrigin("*");
                 cc.setMaxAge(Duration.ZERO);
                 cc.setAllowCredentials(Boolean.TRUE);
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

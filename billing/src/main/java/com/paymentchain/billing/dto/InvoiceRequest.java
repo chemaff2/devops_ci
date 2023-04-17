@@ -5,25 +5,62 @@
  */
 package com.paymentchain.billing.dto;
 
-
-import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
  *
  * @author sotobotero
  */
-@Data
-@Schema(description = "This model represent a Invoice data that user receive when make a request method" )
+//@Data
+@ApiModel(description = "This model represent a Invoice data that user receive when make a request method" )
 public class InvoiceRequest {
     
-    @Schema(name = "customer", required = true,example = "1", defaultValue = "Unique Id of customer taht represent the owner of invoice")
+    @ApiModelProperty(name = "customer", required = true,example = "1", value = "Unique Id of customer taht represent the owner of invoice")
     private long customer;
-     @Schema(name = "number", required = true,example = "2548975",defaultValue = "Bussines number that identified a invoice")
+     @ApiModelProperty(name = "number", required = true,example = "2548975",value = "Bussines number that identified a invoice",allowEmptyValue = false)
   private String number;
-      @Schema(name = "detail", required = false,example = "Professional services")
+      @ApiModelProperty(name = "detail", required = false,example = "Professional services")
    private String detail;
-      @Schema(name = "amount", required = true,example = "3659.23")
-   private double amount;    
+      @ApiModelProperty(name = "amount", required = true,example = "3659.23")
+   private double amount; 
+
+    public InvoiceRequest() {
+    }      
+      
+    public long getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(long customer) {
+        this.customer = customer;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+      
+      
    
 }

@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package com.paymentchain.billing.common;
-
-import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  *
@@ -23,20 +22,20 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * https://api.twitter.com/1.1/statuses/update.json?include_entities=true
  */
 public class StandarizedApiExceptionResponse{
-   @Schema(description = "The unique uri identifier that categorizes the error", name = "type", 
+   @ApiModelProperty(notes = "The unique uri identifier that categorizes the error", name = "type", 
            required = true, example = "/errors/authentication/not-authorized")
     private String type ="/errors/uncategorized";
-    @Schema(description = "A brief, human-readable message about the error", name = "title", 
+    @ApiModelProperty(notes = "A brief, human-readable message about the error", name = "title", 
            required = true, example = "The user does not have autorization")
     private String title;
-     @Schema(description = "The unique error code", name = "code", 
+     @ApiModelProperty(notes = "The unique error code", name = "code", 
            required = false, example = "192")
     private String code;
-      @Schema(description = "A human-readable explanation of the error", name = "detail", 
+      @ApiModelProperty(notes = "A human-readable explanation of the error", name = "detail", 
            required = true, example = "The user does not have the propertly persmissions to acces the "
                    + "resource, please contact with ass https://digitalthinking.biz/es/ada-enterprise-core#contactus")
     private String detail;
-       @Schema(description = "A URI that identifies the specific occurrence of the error", name = "detail", 
+       @ApiModelProperty(notes = "A URI that identifies the specific occurrence of the error", name = "detail", 
            required = true, example = "/errors/authentication/not-authorized/01")
     private String instance ="/errors/uncategorized/bank";
 
